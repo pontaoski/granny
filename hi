@@ -1,0 +1,50 @@
+This is a sample Orchard program.
+Orchard is the assembler for Granny.
+
+Granny starts the program counter at 1, so let's pad to there.
+
+---
+
+|1
+
+---
+
+This is where our program starts: we jump to the main loop.
+
+---
+
+    &mainLoop
+    Jump
+
+---
+
+We define our two print functions: print:Z and print:Newline.
+
+---
+
+:print
+
+    @Z
+        'z
+        #0 IOAct
+        Ret
+
+    @Newline
+        '\n
+        #0 IOAct
+        Ret
+
+---
+
+Now we define the Main program loop:
+
+---
+
+:mainLoop
+    &print:Z Call
+
+    &print:Newline Call
+
+    &mainLoop Jump
+
+---
